@@ -58,7 +58,7 @@
       </div>
     </ons-toolbar>
 
-    <ons-tabbar swipeable position="auto">
+    <ons-tabbar swipeable position="auto" id="tabbar">
       <ons-tab page="tab1.html" label="Home" icon="ion-home, material:md-home" badge="7" active>
       </ons-tab>
       <ons-tab page="tab2.html" label="Catalog" icon="fa-heart" active-icon="fa-heart">
@@ -88,7 +88,7 @@
       <script id="icon_template" type="text/template">
         <ons-row style="height:120px" vertical-align="center">  
         <% categories.forEach(function(category){%>  
-        <ons-col style="background: rgb(255, 98, 26); border:2px solid; color : white;" width="33%">
+        <ons-col style="background: rgb(255, 98, 26); border:2px solid; color : white;" width="33%" onclick="changeTab('<%= category.name %>')">
           <p style="text-align: center; margin: 10px;">
             <ons-icon size="60px" icon="<%= category.icon %>"></ons-icon>
           </p>
@@ -102,7 +102,7 @@
     </ons-page>
   </template>
 
-  <template id="tab2.html">
+  <!-- <template id="tab2.html">
     <ons-page id="Tab2">
       <p style="text-align: center; margin-top: 10px;">
         <ons-search-input placeholder="Search" onchange="ons.notification.alert('Searched for: ' + this.value)"></ons-search-input>
@@ -128,7 +128,42 @@
         </div>
     </script>
     </ons-page>
-  </template>
+  </template> -->
+
+  <template id="tab2.html">
+      <ons-page id="Tab2">
+        <p style="text-align: center; margin-top: 10px;">
+          <ons-search-input placeholder="Search" onchange="ons.notification.alert('Searched for: ' + this.value)"></ons-search-input>
+        </p>
+        <hr>
+        <p><b>แบรนด์สุดฮิต</b> อัพเดทใหม่วันนี้</p>
+        
+        <ons-row>
+            <div id="allP"></div>
+         <script id="allP_template" type="text/template"> 
+        <ons-row>
+        <% allP.forEach(function(allP){
+          var item = allP.data();
+          %>  
+          <ons-col>
+            <ons-card>
+              <img src="<%=item.photo%>" alt="Onsen UI" style="width:100%; hight:250px;">
+              <div class="title">
+                <%=item.title%>
+              </div>
+              <div class="content" id="Pdetail">
+                Price: <%= item.price %>
+              </div>
+            </ons-card>
+          </ons-col>
+          <%});%>
+        </ons-row>
+        </script>
+  
+        </ons-row>
+        <ons-button onclick="addNewData()">ADD DATA</ons-button>
+      </ons-page>
+    </template>
 
 
   <template id="tab3.html">
@@ -184,11 +219,15 @@
     </ons-page>
   </template>
 
-
-
 </body>
 
 <script>
+
+function changeTab(name) {
+  localStorage.setItem('name',name);
+  document.getElementById('tabbar').setActiveTab(1);
+}
+
   getHomeData();
   document.addEventListener('prechange', function (event) {
     if (event.index == 0) {
@@ -197,9 +236,11 @@
       getHomeData();
     } else if (event.index == 1) {
       console.log('Cart clicked');
+      var name1 = localStorage.getItem('name');
       // get data for cart screen
-      getAllProduct();
-
+      if(name1==null){getAllProduct();}
+      else{getAllProduct(name1);}
+      localStorage.clear();
     }
     else if (event.index == 2) {
       console.log('All product clicked');
@@ -231,100 +272,58 @@
       console.log("Error getting document:", error);
     });
 
-    var productRef = db.collection("collection").doc("products");
-    productRef.get().then(function (doc) {
-      if (doc.exists) {
-        console.log("Document data:", doc.data());
-        var data = doc.data();
-
-        var product_template = $('#product_template').html();
-        html = ejs.render(product_template, { products: data.products });
-        $('#cards').html(html);
-      }
-      else {
-        // doc.data() will be undefined in this case
-        console.log("No such document!");
-      }
-    }).catch(function (error) {
-      console.log("Error getting document:", error);
-    });
-
-    // function getHomeData() {
-    //       var docRef = db.collection("UI").doc("home");
-
-    //       docRef.get().then(function(doc) 
-    //       {
-    //           if (doc.exists) {
-    //               console.log("Document data:", doc.data());
-    //               var data = doc.data();
-    //               $('#appname').html(data.appname);
-    //               for (var i = 0; i < data.slides.length; i++) {
-    //                   let index = i + 1;
-    //                   var style = "background: url('images/" + data.slides[i] + "') no-repeat center; background-size: contain;";
-    //                   $('#carousel' + index).attr('style', style);
-    //               }
-    //               var icon_template = $('#icon_template').html();
-    //               html = ejs.render(icon_template, {categories: data.categories});
-    //               $('#icons').html(html);
-    //           } 
-    //           else {
-    //               // doc.data() will be undefined in this case
-    //               console.log("No such document!");
-    //           }
-    //       }).catch(function(error) {
-    //           console.log("Error getting document:", error);
-    //       });
-
-    //       var productRef = db.collection('collection').doc('products');
-    //       productRef.get().then(function(doc) 
-    //       {
-    //           if (doc.exists) {
-    //               console.log("Document data:", doc.data());
-    //               var data = doc.data();
-
-    //               var product_template = $('#product_template').html();
-    //               html = ejs.render(product_template, {products: data.product});
-    //               $('#cards').html(html);
-    //           }
-    //           else {
-    //               // doc.data() will be undefined in this case
-    //               console.log("No such document!");
-    //           }
-    //       }).catch(function(error) {
-    //           console.log("Error getting document:", error);
-    //       });
-
-
-
-    // $.getJSON('home.json', function (data) {
-    //   console.log(data);
-    //   $('#appname').html(data.appname);
-    //   var style = "background: url('images/" + data.slides[0] + "') no-repeat center; background-size: contain;'";
-    //   $('#carousel1').attr('style', style)
-    //   var icon_template = $('#icon_template').html();
-    //   var html = ejs.render(icon_template, {categories : data.categories});
-    //   $('#icons').html(html);
-    // });
   }
+
   function getCartData() {
     $.getJSON('cart.json', function (data) {
       console.log(data);
     });
   }
-  function getAllProduct() {
-    var allProductRef = db.collection("PRODUCTS").where("category", "==", "sport");
-    allProductRef.get().then(function (querySnapshot) {
-      querySnapshot.forEach(function (doc) {
-        console.log(doc.id, " => ", doc.data());
-      });
-    });
+ 
+  function getAllProduct(name1) {
+    if(name1==null){
+    var apr = db.collection("PRODUCTS")//เลือกเฉพาะ
+    apr.get().then(function (querySnapshot) {
+      /*querySnapshot.forEach(function (doc) {
+        var data = doc.data();
+        console.log(data);
+        var allP_template = $('#allP_template').html();
+        querySnapshot
+        var html = ejs.render(allP_template, { allP: data });
+        console.log(html);
+        $('#allP').html(html);
+        
+      })*/
+      var allP_template = $('#allP_template').html();
+      console.log(querySnapshot);
+      var html = ejs.render(allP_template, { allP: querySnapshot.docs });
+      $('#allP').html(html);
+    })}else{ var apr = db.collection("PRODUCTS").where("category", "==",name1); //เลือกเฉพาะ
+    apr.get().then(function (querySnapshot) {
+      /*querySnapshot.forEach(function (doc) {
+        var data = doc.data();
+        console.log(data);
+        var allP_template = $('#allP_template').html();
+        querySnapshot
+        var html = ejs.render(allP_template, { allP: data });
+        console.log(html);
+        $('#allP').html(html);
+        
+      })*/
+      var allP_template = $('#allP_template').html();
+      console.log(querySnapshot);
+      var html = ejs.render(allP_template, { allP: querySnapshot.docs });
+      $('#allP').html(html);
+    })}
   }
+
   function addNewData() {
     var data = {
       pid: '7',
-      title: 'iphoneX',
-      price: 50000,
-      category: 'smartphone'
+      title: 'Adidaspink',
+      price: 24500,
+      category: 'sport',
+     
     };
     //เพิ่มค่าโดยไม่ใช้ไอดี
     db.collection("PRODUCTS").add(data)
