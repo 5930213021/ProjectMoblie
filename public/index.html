@@ -140,23 +140,20 @@
         
         <ons-row>
             <div id="allP"></div>
-         <script id="allP_template" type="text/template"> 
-        <ons-row>
+        <script id="allP_template" type="text/template">
+          
+        <ons-row class="row text-center">
         <% allP.forEach(function(allP){
           var item = allP.data();
           %>  
-          <ons-col>
+          <ons-col width:20%;>
             <ons-card>
-              <img src="<%=item.photo%>" alt="Onsen UI" style="width:100%; hight:250px;">
-              <div class="title">
-                <%=item.title%>
-              </div>
-              <div class="content" id="Pdetail">
-                Price: <%= item.price %>
-              </div>
+              <img src="<%=item.photo%>" alt="Onsen UI" style="width:200px; height:200px; text-align: center;">
+              <div class="title"><%=item.title%></div>
+              <div class="content" id="Pdetail">Price: <%= item.price %></div>
             </ons-card>
           </ons-col>
-          <%});%>
+        <%});%>
         </ons-row>
         </script>
   
@@ -239,7 +236,7 @@ function changeTab(name) {
       var name1 = localStorage.getItem('name');
       // get data for cart screen
       if(name1==null){getAllProduct();}
-      else{getAllProduct(name1);}
+        else{getAllProduct(name1);}
       localStorage.clear();
     }
     else if (event.index == 2) {
