@@ -11,6 +11,27 @@
   <script src="https://www.gstatic.com/firebasejs/5.5.0/firebase.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-firestore.js"></script>
+  <style>
+      a:link {
+        text-decoration: none;
+        display: inline-block;
+      }
+  
+      a:visited {
+        text-decoration: none;
+        display: inline-block;
+      }
+  
+      a:hover {
+        text-decoration: underline;
+        display: inline-block;
+      }
+  
+      a:active {
+        text-decoration: underline;
+        display: inline-block;
+      }
+  </style>
   <script>
     //Initialize Firebase
     var config = {
@@ -38,6 +59,7 @@
       padding-right: 5px;
       color: white;
     }
+  
   #picz{
     margin: 0% auto;
     width:100%; 
@@ -66,14 +88,14 @@
     border-radius: 5px;
 } */
 
- :checked+.tabbar__button {
+:checked+.tabbar__button {
     color: tomato;
  }
   </style>
 </head>
 
 
-<body>
+<body class="body">
   <ons-page>
     <ons-toolbar style="background:rgb(255, 98, 26);">
       <div class="left">
@@ -169,7 +191,7 @@
           <ons-button style="background-color:rgb(240, 140, 120);" modifier="large" onclick="addNewData();">
               Add New Data
             </ons-button>
-          </section>
+        </section>
         
         <div id="allP"></div>
         <script id="allP_template" type="text/template">
