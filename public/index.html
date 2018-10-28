@@ -36,7 +36,7 @@
       padding-left: 5px;
       padding-bottom: 5px;
       padding-right: 5px;
-      color: rgb(255, 98, 26);
+      color: white;
     }
   #picz{
     margin: 0% auto;
@@ -52,7 +52,7 @@
     text-align: center;
     word-wrap: break-word;
 }
-.button {
+/* .button {
     display: inline-block;
     background: rgb(255, 138, 0);
     font-family: -apple-system,'Helvetica Neue',Helvetica,Arial,'Lucida Grande',sans-serif;
@@ -64,28 +64,30 @@
     line-height: 32px;
     color: #fff;
     border-radius: 5px;
-}
- 
+} */
+
+ :checked+.tabbar__button {
+    color: tomato;
   </style>
 </head>
 
 
 <body>
   <ons-page>
-    <ons-toolbar style="background:coral;">
+    <ons-toolbar style="background:rgb(255, 98, 26);">
       <div class="left">
-        <ons-icon class="toolbaricon" size="30px" icon="fa-shopping-bag">
+        <ons-icon class="toolbaricon" size="25px" icon="fa-shopping-bag" style="margin-left:10px;">
         </ons-icon>
       </div>
-      <div class="center" id="appname" style="text-align:center;"></div>#</div>
+      <div class="center" id="appname" style="text-align:center; color:white;"></div>#</div>
       <div class="right">
-        <ons-icon class="toolbaricon" size="30px" icon="md-help">
+        <ons-icon class="toolbaricon" size="25px" icon="md-help" style="margin-right:10px;">
         </ons-icon>
       </div>
     </ons-toolbar>
 
     <ons-tabbar swipeable position="auto" id="tabbar">
-      <ons-tab page="tab1.html" label="Home" icon="ion-home, material:md-home" badge="7" active>
+      <ons-tab page="tab1.html" label="Home" icon="ion-home, material:md-home" badge="99" active>
       </ons-tab>
       <ons-tab page="tab2.html" label="Catalog" icon="fa-heart" active-icon="fa-heart">
       </ons-tab>
