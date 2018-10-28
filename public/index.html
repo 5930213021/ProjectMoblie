@@ -68,6 +68,7 @@
 
  :checked+.tabbar__button {
     color: tomato;
+ }
   </style>
 </head>
 
@@ -182,10 +183,10 @@
             <ons-card>
               <img id="picz" src="<%=item.photo%>" alt="Onsen UI" ><br>
               <div class="title"><%=item.title%></div>
-              <div class="content" id="Pdetail">Price: <%= item.price %></div><br>
-                <div class="center">
+              <div class="content" id="Pdetail">Price: <%= item.price %> ฿</div><br>
+                <!-- <div class="center">
                   <ons-button id="push-button">Push page</ons-button>
-                </div>
+                </div> -->
             </ons-card>
           </ons-col>
         <%});%>
