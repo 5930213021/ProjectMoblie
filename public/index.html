@@ -140,12 +140,12 @@
           <ons-search-input placeholder="Search" onchange="ons.notification.alert('Searched for: ' + this.value)"></ons-search-input>
         </p>
         <hr>
-        <p><b>แบรนด์สุดฮิต</b> อัพเดทใหม่วันนี้</p>
+        
         <section style=" padding: 8px; text-align: center; margin: 10px;">
-            <ons-button modifier="large" onclick="addNewData();">
+          <p><b>แบรนด์สุดฮิต</b> อัพเดทใหม่วันนี้</p>  
+          <ons-button style="background-color:rgb(240, 140, 120);" modifier="large" onclick="addNewData();">
               Add New Data
             </ons-button>
-            <ons-button onclick="addNewData()">ADD DATA</ons-button>
           </section>
         
         <div id="allP"></div>
@@ -256,6 +256,7 @@ function changeTab(name) {
       getCartData();
     }
   });
+  
   function getHomeData() {
     var docRef = db.collection("UI").doc("home");
     docRef.get().then(function (doc) {
@@ -308,16 +309,6 @@ function changeTab(name) {
       $('#allP').html(html);
     })}else{ var apr = db.collection("PRODUCTS").where("category", "==",name1); //เลือกเฉพาะ
     apr.get().then(function (querySnapshot) {
-      /*querySnapshot.forEach(function (doc) {
-        var data = doc.data();
-        console.log(data);
-        var allP_template = $('#allP_template').html();
-        querySnapshot
-        var html = ejs.render(allP_template, { allP: data });
-        console.log(html);
-        $('#allP').html(html);
-        
-      })*/
       var allP_template = $('#allP_template').html();
       console.log(querySnapshot);
       var html = ejs.render(allP_template, { allP: querySnapshot.docs });
@@ -328,10 +319,10 @@ function changeTab(name) {
   function addNewData() {
     var data = {
       pid: '7',
-      title: 'Adidaspink',
+      title: 'Nii2',
       price: 24500,
-      category: 'sport',
-     
+      category: 'Cosmetic',
+      photo : "https://firebasestorage.googleapis.com/v0/b/shopee-8b7e0.appspot.com/o/products%2Fitem5.jpg?alt=media&token=841cb645-713b-43b9-9b5e-fa9cd2a1501b"
     };
     //เพิ่มค่าโดยไม่ใช้ไอดี
     db.collection("PRODUCTS").add(data)
