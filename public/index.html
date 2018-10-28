@@ -41,7 +41,7 @@
   #picz{
     margin: 0% auto;
     width:100%; 
-    height:100px;
+    height:50%;
   }
     
   </style>
@@ -145,8 +145,10 @@
         
         <div id="allP"></div>
         <script id="allP_template" type="text/template">
-        <ons-row>
-        <% allP.forEach(function(allP){
+        <div class="card-group" style="margin: auto;">
+          <div class="row" style="padding: 8px">
+            <ons-row>
+            <% allP.forEach(function(allP){
           var item = allP.data();
           %>  
           <ons-col width:100%;>
@@ -161,6 +163,7 @@
           </ons-col>
         <%});%>
         </ons-row>
+      </div></div>
         </script>
         
 
