@@ -162,7 +162,9 @@
               <img id="picz" src="<%=item.photo%>" alt="Onsen UI" >
               <br><br><div class="title"><%=item.title%></div>
               <div class="content" id="Pdetail">Price: <%= item.price %></div>
-              
+                <div class="center">
+                  <ons-button id="push-button">Push page</ons-button>
+                </div>
             </ons-card>
           </ons-col>
         <%});%>
@@ -256,8 +258,8 @@ function changeTab(name) {
       getCartData();
     }
   });
-  
-  function getHomeData() {
+
+function getHomeData(){
     var docRef = db.collection("UI").doc("home");
     docRef.get().then(function (doc) {
       if (doc.exists) {
@@ -281,15 +283,9 @@ function changeTab(name) {
       console.log("Error getting document:", error);
     });
 
-  }
-
-  function getCartData() {
-    $.getJSON('cart.json', function (data) {
-      console.log(data);
-    });
-  }
+}
  
-  function getAllProduct(name1) {
+function getAllProduct(name1){
     if(name1==null){
     var apr = db.collection("PRODUCTS")//เลือกเฉพาะ
     apr.get().then(function (querySnapshot) {
@@ -307,16 +303,18 @@ function changeTab(name) {
       console.log(querySnapshot);
       var html = ejs.render(allP_template, { allP: querySnapshot.docs });
       $('#allP').html(html);
-    })}else{ var apr = db.collection("PRODUCTS").where("category", "==",name1); //เลือกเฉพาะ
-    apr.get().then(function (querySnapshot) {
-      var allP_template = $('#allP_template').html();
-      console.log(querySnapshot);
-      var html = ejs.render(allP_template, { allP: querySnapshot.docs });
-      $('#allP').html(html);
-    })}
-  }
+      })}
+        else{ 
+          var apr = db.collection("PRODUCTS").where("category", "==",name1); //เลือกเฉพาะ
+          apr.get().then(function (querySnapshot) {
+          var allP_template = $('#allP_template').html();
+          console.log(querySnapshot);
+          var html = ejs.render(allP_template, { allP: querySnapshot.docs });
+          $('#allP').html(html);
+        })}
+}
 
-  function addNewData() {
+function addNewData() {
     var data = {
       pid: '7',
       title: 'Nii2',
@@ -333,8 +331,13 @@ function changeTab(name) {
         console.error("Error adding document: ", error);
       })
 
-  }
+}
 
+function getCartData() {
+    $.getJSON('cart.json', function (data) {
+      console.log(data);
+    });
+}
 
 </script>
 
