@@ -196,7 +196,7 @@
         <div id="allP"></div>
         <script id="allP_template" type="text/template">
         <div class="card-group" style="margin: auto; padding:5px;">
-            <ons-row class="Alldetail text-center">
+            <ons-row class="Alldetail">
             <% allP.forEach(function(allP){
           var item = allP.data();
           %>  
@@ -204,7 +204,7 @@
             <ons-card>
               <img id="picz" src="<%=item.photo%>" alt="Onsen UI" ><br>
               <div class="title" style=" font-size:15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><%=item.title%></div>
-              <div class="content" id="Pdetail">Price: <%= item.price %> ฿</div>
+              <div class="content" id="Pdetail" style="font-size:6px;" >Price: <%= item.price %> ฿</div>
                 <!-- <div class="center">
                   <ons-button id="push-button">Push page</ons-button>
                 </div> -->
