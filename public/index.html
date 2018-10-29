@@ -212,11 +212,11 @@
         <script id="allP_template" type="text/template">
         <div class="card-group" style="margin: auto; padding:5px;">
           
-            <ons-row class="Alldetail">
+            <ons-row class="Alldetail" style="height:120px" vertical-align="center">
             <% allP.forEach(function(allP){
           var item = allP.data();
           %>  
-          <ons-col style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width:50%">
+          <ons-col width:50%; style="background:rgb(255, 98, 26); border:2px solid; color : white;">
              <!-- <ons-card>
               <img id="picz" src="<%=item.photo%>" alt="Onsen UI" ><br>
               <div class="title" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><%=item.title%></div>
@@ -226,13 +226,12 @@
                 </div> 
             </ons-card>  -->
 
-            <div class="grid-container">
+            <!-- <div class="grid-container"> -->
               <div class="grid-item">
                 <img id="picz" src="<%=item.photo%>" alt="Onsen UI" ><br>
-                <div class="title"><%=item.title%></div>
-                <div class="content" id="Pdetail">Price: <%= item.price %> ฿</div>
+                <div class="title"style="text-align: center; margin: 10px;"><%=item.title%></div>
+                <div class="content" id="Pdetail"style="text-align: center; margin: 10px;">Price: <%= item.price %> ฿</div>
               </div>
-            </div> 
 
 
           </ons-col>
