@@ -208,9 +208,6 @@
               <img id="picz" src="<%=item.photo%>" alt="Onsen UI" ><br>
               <div class="title"><%=item.title%></div>
               <div class="content" id="Pdetail">Price: <%= item.price %> ฿</div>
-                <!-- <div class="center">
-                  <ons-button id="push-button">Push page</ons-button>
-                </div> -->
             </ons-card>
           </ons-col>
         <%});%>
@@ -295,12 +292,12 @@
                 </div>
                 <ons-list>
                   <ons-list-header>Bindings</ons-list-header>
-                  <ons-list-item>Vue</ons-list-item>
-                  <ons-list-item>Angular</ons-list-item>
-                  <ons-list-item>React</ons-list-item>
+                  <ons-list-item>Vue   <%=data.Vue%></ons-list-item>
+                  <ons-list-item>Angular <%=data.Angular%></ons-list-item>
+                  <ons-list-item>React <%=data.React%> </ons-list-item>
                 </ons-list>
               </div>
-              <ons-button  onclick="addtocart('<%=data.title%>')">HEEMA</ons-button>
+              <ons-button  onclick="addtocart('<%=data.title%>')">ADD CART</ons-button>
               <%})%>
             </ons-card>
             
