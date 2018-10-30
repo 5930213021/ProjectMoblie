@@ -125,7 +125,7 @@
   <template id="tab1.html">
     <ons-page id="Tab1"><br>
       <p style="text-align: center; margin-top: 10px;">
-        <ons-search-input placeholder="Search" onchange="search('this.value')"></ons-search-input>
+        <ons-search-input placeholder="Search" onchange="search(this.value)"></ons-search-input>
       </p>
       <ons-carousel swipeable auto-scroll overscrollable id="carousel" style="height: 300px;">
         <ons-carousel-item id="carousel1" style="background: url('') no-repeat center; background-size: contain;">
@@ -331,8 +331,20 @@ function changeTab(name) {
     }
     else if (event.index == 2) {
       console.log('All product clicked');
+
+      var name1 = localStorage.getItem('name');
+      var item = localStorage.getItem('items');
+        if(name1==null&&item==null){
+          getAllProduct();
+        }
+        else if(name1!=null&&item==null){
+          getAllProduct(name1);
+          localStorage.clear();
+        }else{
+          localStorage();
+        }
       // get data for all product screen  
-      getData2cart()
+      getData2cart();
     }
   });
 
@@ -382,7 +394,7 @@ function addNewData() {
       })
 }
 
-function getAllProduct(name1){
+function getAllProduct(name1,item){
     if(name1==null){
     var apr = db.collection("PRODUCTS")//เลือกเฉพาะ
     apr.get().then(function (querySnapshot) {
@@ -402,31 +414,8 @@ function getAllProduct(name1){
         })}
 }
 
-
-
-    $.getJSON('cart.json', function (data) {
-      console.log(data);
-    });
-
-     function showDetailP() {
-    var dataproduct = localStorage.getItem('getDep');
-    var apr = db.collection("PRODUCTS").where("title", "==", dataproduct);
-    apr.get().then(function (querySnapshot) {
-      var Detailproduct_template = $('#Detailproduct_template').html();
-      var html = ejs.render(Detailproduct_template, { dataDep: querySnapshot.docs });
-      $('#showDep').html(html); 
-    })
-  
-  }
-  function getDetail(getDep){
-localStorage.setItem("getDep",getDep)
-showDetailP();
-myNavigator.pushPage('detailP.html');
-
-}
-
 function search(search) {
-   
+  
    const filterItems = (needle, heystack) => {
     let query = needle.toLowerCase();
     return heystack.filter(item => item.data().title.toLowerCase().indexOf(needle) >= 0);
@@ -436,16 +425,13 @@ function search(search) {
   console.log("xxx",item)
   localStorage.setItem('items', item);
   
-
   console.log('tong',item);
-  
-test(item);
-
-document.getElementById('tabbar').setActiveTab(2);
-     localStorage.setItem('title', item);
+  test(item);
+  document.getElementById('tabbar').setActiveTab(1);
+    //localStorage.setItem('title', item);
   }
-
   const data = []
+
 
 function tatol() {
   console.log(search);
@@ -468,13 +454,39 @@ console.log("888",title);
  
     console.log('tset',title);
 
-        // doc.data() is never undefined for query doc snapshots
+        // doc.data() is never undefined for query doc snapshots  allP_template
         
-        var product_template = $('#product_template').html();
-         var html = ejs.render(product_template, { product: title });
-        $('#product').html(html);
+        // var product_template = $('#product_template').html();
+        //  var html = ejs.render(product_template, { product: title });
+        // $('#product').html(html);
+
+         var allP_template = $('#allP_template').html();
+         var html = ejs.render(allP_template, { allP : title });
+        $('#allP').html(html);
   
  }
+ 
+function getDetail(getDep){
+  localStorage.setItem("getDep",getDep)
+  showDetailP();
+  myNavigator.pushPage('detailP.html');
+}    
+
+function showDetailP() {
+    var dataproduct = localStorage.getItem('getDep');
+    var apr = db.collection("PRODUCTS").where("title", "==", dataproduct);
+    apr.get().then(function (querySnapshot) {
+      var Detailproduct_template = $('#Detailproduct_template').html();
+      var html = ejs.render(Detailproduct_template, { dataDep: querySnapshot.docs });
+      $('#showDep').html(html); 
+    })
+  
+  }
+
+ $.getJSON('cart.json', function (data) {
+      console.log(data);
+    });
+
  var dataCart = [];
 function addtocart(add2cart){
   localStorage.clear('quentinTarantino');
