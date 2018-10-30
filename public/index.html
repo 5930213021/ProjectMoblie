@@ -399,7 +399,8 @@ function getAllProduct(name1,item){
       var html = ejs.render(allP_template, { allP: querySnapshot.docs });
       $('#allP').html(html);
       })}
-        else{ 
+        
+      else{ 
           var apr = db.collection("PRODUCTS").where("category", "==",name1); //เลือกเฉพาะ
           apr.get().then(function (querySnapshot) {
           var allP_template = $('#allP_template').html();
