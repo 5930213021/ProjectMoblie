@@ -316,35 +316,30 @@ function changeTab(name) {
 }
 
   getHomeData();
+  tatol()
   document.addEventListener('prechange', function (event) {
     if (event.index == 0) {
       console.log('Home clicked');
       // get data for home screen
       getHomeData();
     } else if (event.index == 1) {
-      console.log('Cart clicked');
-      var name1 = localStorage.getItem('name');
-      // get data for cart screen
-      if(name1==null){getAllProduct();}
-        else{getAllProduct(name1);}
-      localStorage.clear();
-    }
-    else if (event.index == 2) {
       console.log('All product clicked');
-
       var name1 = localStorage.getItem('name');
       var item = localStorage.getItem('items');
-        if(name1==null&&item==null){
+      // get data for cart screen
+      if(name1==null&&item==null){
           getAllProduct();
         }
         else if(name1!=null&&item==null){
           getAllProduct(name1);
           localStorage.clear();
         }else{
-          localStorage();
+          localStorage.clear();
         }
-      // get data for all product screen  
-      getData2cart();
+      } else if (event.index == 2) {
+      console.log('Cart clicked');
+      // get data for cart screen  
+      getData2cart()
     }
   });
 
@@ -430,6 +425,7 @@ function search(search) {
   document.getElementById('tabbar').setActiveTab(1);
     //localStorage.setItem('title', item);
   }
+
   const data = []
 
 
@@ -465,7 +461,7 @@ console.log("888",title);
         $('#allP').html(html);
   
  }
- 
+  
 function getDetail(getDep){
   localStorage.setItem("getDep",getDep)
   showDetailP();
