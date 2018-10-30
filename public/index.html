@@ -413,20 +413,18 @@ function search(search) {
     let query = needle.toLowerCase();
     return heystack.filter(item => item.data().title.toLowerCase().indexOf(needle) >= 0);
   }
-  console.log("55+", filterItems(search, data));
+  console.log("searching", filterItems(search, data));
   var item=filterItems(search, data);
-  console.log("xxx",item)
+  console.log("toitem",item)
   localStorage.setItem('items', item);
   
-  console.log('tong',item);
+  console.log('item',item);
   test(item);
   document.getElementById('tabbar').setActiveTab(1);
     //localStorage.setItem('title', item);
   }
 
-  const data = []
-
-
+const data = []
 function tatol() {
   console.log(search);
   db.collection("PRODUCTS").get()
@@ -441,7 +439,7 @@ function tatol() {
 }
 
 function test(title){
-console.log("888",title);
+console.log("check",title);
 console.log('tset',title);
         
         // var product_template = $('#product_template').html();
