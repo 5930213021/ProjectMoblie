@@ -112,11 +112,11 @@
     </ons-toolbar>
 
     <ons-tabbar swipeable position="auto" id="tabbar">
-      <ons-tab page="tab1.html" label="Home" icon="ion-home, material:md-home" badge="99" active>
+      <ons-tab page="tab1.html" label="Home" icon="ion-home, material:md-home" badge="new" active>
       </ons-tab>
-      <ons-tab page="tab2.html" label="Catalog" icon="fa-heart" active-icon="fa-heart">
+      <ons-tab  page="tab2.html" label="Catalog" icon="fa-heart" active-icon="fa-heart">
       </ons-tab>
-      <ons-tab page="tab3.html" label="Cart" icon="fa-shopping-cart" active-icon="fa-shopping-cart">
+      <ons-tab page="tab3.html" label="Cart" icon="fa-shopping-cart" id="badge" active-icon="fa-shopping-cart">
       </ons-tab>
 
     </ons-tabbar>
@@ -490,6 +490,7 @@ dataCart.push(retrievedData);
  ons.notification.toast('Toast!', {
     timeout: 2000
   });
+  $('#badge').attr('badge',dataCart.length);
 
 //alert(dataCart);
 }
