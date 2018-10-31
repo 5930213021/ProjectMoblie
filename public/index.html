@@ -77,7 +77,6 @@
     font-size: 18px;
     margin: 4px 0 8px;
     padding: 0;
-    line-height: 2;
 }
 .card__content {
     font-size: 14px;
@@ -215,6 +214,7 @@
              <img id="picz" src="<%=item.photo[0]%>" alt="Onsen UI" ><br>
               <div class="title"><%=item.title%></div>
               <div class="content" id="Pdetail">Price: <%= item.price %> ฿</div>
+              <br>
             </ons-card>
           </ons-col>
         <%});%>
@@ -292,13 +292,13 @@
                 
               
               <div class="content">
-                <div class="title"  ><b><%= data.title %></b></div>
+                <div class="title" style="font-size:18px;" ><%= data.title %></div>
                   <div ><%= data.price%> ฿</div>
 
                 
                 <ons-list>
 
-                  <ons-list-header><b>Detail product</b></ons-list-header>
+                  <ons-list-header style="background: rgb(255, 147, 126, 0.6);" ><b>Detail product</b></ons-list-header>
                   <ons-list-item><b>Brand  </b>   
                     <div class="brand" style="margin-left:50px;"><%=data.brand%></div>
                   </ons-list-item>
