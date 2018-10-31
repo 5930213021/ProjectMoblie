@@ -285,12 +285,16 @@
               <div class="content">
                 <div class="title"  ><b><%= data.title %></b></div>
                   <div ><%= data.price%> ฿</div>
+
+                
+
                 <ons-list>
                   <ons-list-header><b>Bindings</b></ons-list-header>
                   <ons-list-item><b>Vue</b>   <%=data.Vue%></ons-list-item>
                   <ons-list-item><b>Angular</b> <%=data.Angular%></ons-list-item>
                   <ons-list-item><b>React</b> <%=data.React%> </ons-list-item>
                 </ons-list>
+                
               </div>
               <ons-button  onclick="addtocart('<%=data.title%>')">ADD CART</ons-button>
               <%})%>
