@@ -289,16 +289,17 @@
                 
                 <ons-list>
                   <ons-list-header><b>Bindings</b></ons-list-header>
-                  <ons-list-item><b>Vue</b>   
-                    <div class="vue" style="margin-left:150px;" ><%=data.Vue%></div>
+                  <ons-list-item><b>Vue  </b>   
+                    <div class="vue" style="margin-left:50px;" ><%=data.Vue%></div>
                   </ons-list-item>
 
-                  <ons-list-item><b>Angular</b> <%=data.Angular%></ons-list-item>
-                  <ons-list-item><b>React</b> <%=data.React%> </ons-list-item>
+                  <ons-list-item><b>Angular  </b> <%=data.Angular%></ons-list-item>
+                  <ons-list-item><b>React  </b> <%=data.React%> </ons-list-item>
                 </ons-list>
                 
               </div>
               <ons-button  onclick="addtocart('<%=data.title%>')">ADD CART</ons-button>
+             
               <%})%>
             </ons-card>
             
@@ -478,13 +479,19 @@ function showDetailP() {
     });
 
  var dataCart = [];
+
 function addtocart(add2cart){
   localStorage.clear('quentinTarantino');
 localStorage.setItem('quentinTarantino',add2cart);
 var retrievedData = localStorage.getItem("quentinTarantino");
 console.log(retrievedData);
 dataCart.push(retrievedData);
-alert(dataCart);
+
+ ons.notification.toast('Toast!', {
+    timeout: 2000
+  });
+
+//alert(dataCart);
 }
  function getData2cart(){
   console.log('functioncart');
