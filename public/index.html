@@ -288,16 +288,23 @@
 
                 
                 <ons-list>
-                  <ons-list-header><b>Bindings</b></ons-list-header>
-                  <ons-list-item><b>Vue  </b>   
-                    <div class="vue" style="margin-left:50px;" ><%=data.Vue%></div>
+
+                  <ons-list-header><b>Detail product</b></ons-list-header>
+                  <ons-list-item><b>Brand  </b>   
+                    <div class="brand" style="margin-left:50px;"><%=data.brand%></div>
                   </ons-list-item>
 
-                  <ons-list-item><b>Angular  </b> <%=data.Angular%></ons-list-item>
-                  <ons-list-item><b>React  </b> <%=data.React%> </ons-list-item>
+                  <ons-list-item><b>Color  </b>
+                    <div class="color" style="margin-left:50px;"><%=data.color%></div>
+                  </ons-list-item>
+                  
+                  <ons-list-item><b>Model  </b> 
+                    <div class="model" style="margin-left:50px;"><%=data.model%></div>
+                  </ons-list-item>
+
                 </ons-list>
                 
-              </div>
+              </div><br><br>
               <ons-button  onclick="addtocart('<%=data.title%>')">ADD CART</ons-button>
              
               <%})%>
