@@ -74,13 +74,15 @@
 }
 .card__title {
     -webkit-font-smoothing: antialiased;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', 
+    Geneva, Verdana, sans-serif;
     font-size: 18px;
     margin: 4px 0 8px;
     padding: 0;
 }
 .card__content {
-    font-size: 14px;
-    line-height: 1.75;
+    font-size: 16px;
+    line-height: 2;
     color: #030303;
 }
  .button {
@@ -96,7 +98,10 @@
     color: #fff;
     border-radius: 5px;
 }
-
+.side{
+  font-family :'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 10px;
+}
 :checked+.tabbar__button {
     color: tomato;
  }
@@ -281,20 +286,17 @@
               <% dataDep.forEach(function(dataDep){   
                 var data = dataDep.data(); %>
               <ons-carousel swipeable auto-scroll overscrollable id="carousel" style="height: 300px;">
-                
-                    <ons-carousel-item id="carousel1DeP" style="background: url('<%=data.photo[0]%>') no-repeat center; background-size: contain;">
+                    <ons-carousel-item id="carousel1DeP" style="background: url('<%=data.photo[0]%>') no-repeat center; background-size: contain;"> 
                     </ons-carousel-item>
                     <ons-carousel-item id="carousel2DeP" style="background: url('<%=data.photo[1]%>') no-repeat center; background-size: contain;">
                     </ons-carousel-item>
-                    <ons-carousel-item id="carousel3DeP" style="background: url('<%=data.photo[1]%>') no-repeat center; background-size: contain;">
-                    </ons-carousel-item>
-      
              </ons-carousel>
                 
               
               <div class="content">
+                <div class="side"> <--sideslip--> </div>
                 <div class="title" style="font-size:18px;" ><%= data.title %></div>
-                  <div ><%= data.price%> ฿</div><br>
+                  <div ><%= data.price%> ฿</div>
 
                 
                 <ons-list>
