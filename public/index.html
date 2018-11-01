@@ -124,8 +124,17 @@
 
 .toast{
   background: tomato;
-
 }
+
+.back-button__icon {
+    margin-right: 6px;
+    display: inline-flex;
+    fill: white;
+    -webkit-box-align: center;
+    align-items: center;
+    height: 100%;
+}
+
   </style>
 </head>
 
@@ -272,8 +281,8 @@
       console.log(datadep)
       </script>
         <ons-toolbar style="background:rgb(255, 98, 26);">
-            <ons-back-button>
-              <span class="back-button__icon" ></span>
+            <ons-back-button style="color:white;">
+              <!-- <span class="back-button__icon" ></span> -->
               <div class="left">Back</div>
             </ons-back-button>
             <div class="center">Detail</div>
@@ -506,7 +515,7 @@ var retrievedData = localStorage.getItem("quentinTarantino");
 console.log(retrievedData);
 dataCart.push(retrievedData);
 
- ons.notification.toast('Add item!', {
+ ons.notification.toast('Add product!', {
     timeout: 700
   });
   $('#badge').attr('badge',dataCart.length);
