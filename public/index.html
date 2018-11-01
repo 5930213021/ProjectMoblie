@@ -111,6 +111,16 @@
 :checked+.tabbar__button {
     color: tomato;
  }
+
+#tabbar{
+  background-color: #fff;
+
+}
+
+.page, .page__background, .page__content {
+    background-color: #fff;
+    position: absolute;
+}
   </style>
 </head>
 
@@ -129,6 +139,7 @@
         </ons-icon>
       </div>
     </ons-toolbar>
+    <div class="page__background"></div>
 
     <ons-tabbar swipeable position="auto" id="tabbar">
       <ons-tab page="tab1.html" label="Home" icon="ion-home, material:md-home" badge="new" active>
@@ -175,33 +186,6 @@
     </ons-page>
   </template>
 
-  <!-- <template id="tab2.html">
-    <ons-page id="Tab2">
-      <p style="text-align: center; margin-top: 10px;">
-        <ons-search-input placeholder="Search" onchange="ons.notification.alert('Searched for: ' + this.value)"></ons-search-input>
-      </p>
-      <section style=" padding: 8px; text-align: center; margin: 10px;">
-        <ons-button modifier="large" onclick="addNewData();">
-          Add New Data
-        </ons-button>
-      </section>
-      <script id="product_template" type="text/template">
-        <div class="card-group" style="margin: auto;">
-            <div class="row" style="padding: 8px">
-                <% products.forEach(function(product){ %> 
-                    <div class="card col-5" style="margin-right: auto; margin-left: auto;">
-                        <img class="card-img-top" id="photo" src="images/<%= product.photo %>" alt="Card image">
-                        <div class="card-body">
-                            <p class="card-title" style="font-size: 15px;"><%= product.title %></p>
-                            <p class="card-text" style="font-size: 13px;"><%= product.category %><br>price: ฿<%= product.price %></p>
-                        </div> 
-                    </div>
-                <% }); %>
-            </div>
-        </div>
-    </script>
-    </ons-page>
-  </template> -->
 
   <template id="tab2.html">
       <ons-page id="Tab2"><br>
