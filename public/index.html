@@ -317,7 +317,7 @@
                 </ons-list>
                 
               </div><br><br>
-              <ons-button  onclick="addtocart('<%=data.title%>')" icon="fa-shopping-cart" > ADD CART</ons-button>
+              <ons-button  onclick="addcart('<%=data.title%>')" icon="fa-shopping-cart" > ADD CART</ons-button>
              
               <%})%>
             </ons-card>
@@ -337,7 +337,7 @@ function changeTab(name) {
 }
 
   getHomeData();
-  tatol()
+  all()
   document.addEventListener('prechange', function (event) {
     if (event.index == 0) {
       console.log('Home clicked');
@@ -345,14 +345,14 @@ function changeTab(name) {
       getHomeData();
     } else if (event.index == 1) {
       console.log('All product clicked');
-      var name1 = localStorage.getItem('name');
+      var namepro = localStorage.getItem('name');
       var item = localStorage.getItem('items');
       // get data for cart screen
-      if(name1==null&&item==null){
+      if(namepro==null&&item==null){
           getAllProduct();
         }
-        else if(name1!=null&&item==null){
-          getAllProduct(name1);
+        else if(namepro!=null&&item==null){
+          getAllProduct(namepro);
           localStorage.clear();
         }else{
           localStorage.clear();
@@ -410,8 +410,8 @@ function addNewData() {
       })
 }
 
-function getAllProduct(name1,item){
-    if(name1==null){
+function getAllProduct(namepro,item){
+    if(namepro==null){
     var apr = db.collection("PRODUCTS")//เลือกเฉพาะ
     apr.get().then(function (querySnapshot) {
       
@@ -422,7 +422,7 @@ function getAllProduct(name1,item){
       })}
         
       else{ 
-          var apr = db.collection("PRODUCTS").where("category", "==",name1); //เลือกเฉพาะ
+          var apr = db.collection("PRODUCTS").where("category", "==",namepro); //เลือกเฉพาะ
           apr.get().then(function (querySnapshot) {
           var allP_template = $('#allP_template').html();
           console.log(querySnapshot);
@@ -443,13 +443,13 @@ function search(search) {
   localStorage.setItem('items', item);
   
   console.log('item',item);
-  test(item);
+  tester(item);
   document.getElementById('tabbar').setActiveTab(1);
     //localStorage.setItem('title', item);
   }
 
 const data = []
-function tatol() {
+function all() {
   console.log(search);
   db.collection("PRODUCTS").get()
     .then(function (querySnapshot) {
@@ -462,7 +462,7 @@ function tatol() {
   // const fruits = data[1];
 }
 
-function test(title){
+function tester(title){
 console.log("check",title);
 console.log('proset',title);
         
@@ -499,7 +499,7 @@ function showDetailP() {
 
  var dataCart = [];
 
-function addtocart(add2cart){
+function addcart(add2cart){
   localStorage.clear('quentinTarantino');
 localStorage.setItem('quentinTarantino',add2cart);
 var retrievedData = localStorage.getItem("quentinTarantino");
@@ -507,7 +507,7 @@ console.log(retrievedData);
 dataCart.push(retrievedData);
 
  ons.notification.toast('Add item!', {
-    timeout: 2000
+    timeout: 700
   });
   $('#badge').attr('badge',dataCart.length);
 
