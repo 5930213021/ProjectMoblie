@@ -155,7 +155,7 @@
       <ons-tab page="tab3.html" label="Cart" icon="fa-shopping-cart" id="badge" active-icon="fa-shopping-cart">
       </ons-tab>
 
-    <!-- </ons-tabbar><div class="page__background"></div> -->
+   
   </ons-page>
   </ons-navigator>
 
@@ -271,8 +271,8 @@
       var datadep = localStorage.getItem('getDep');
       console.log(datadep)
       </script>
-        <ons-toolbar>
-            <div class="left"><ons-back-button>Back</ons-back-button></div>
+        <ons-toolbar style="background:rgb(255, 98, 26);">
+            <ons-back-button><div class="left" style="color:#fff;">Back</div></ons-back-button>
             <div class="center">Detail</div>
         </ons-toolbar>
 
@@ -294,10 +294,7 @@
                 <div class="side" style="color: gray;" > <--sideslip--> </div>
                 <div class="title" style="font-size:18px; color: black; " ><%= data.title %></div>
                   <div><%= data.price%> ฿</div>
-
-                
                 <ons-list id="deback">
-
                   <ons-list-header style="background: rgb(255, 147, 126, 0.6); font-size:18px;" ><b>Detail product</b></ons-list-header>
                   <ons-list-item>Category  
                     <div id="dep" style="margin-left:70px;"><%=data.category%></div>
