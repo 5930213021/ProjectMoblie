@@ -263,7 +263,10 @@
                 <ons-icon style="color: grey" size="30px" icon="md-delete"></ons-icon>
               </p>
             </div>
-          </ons-list-item>    
+          </ons-list-item>   
+          <section style="padding: 8px">
+              <ons-button modifier="large">PROCEED TO PAY</ons-button>
+          </section> 
         </ons-list>
   
         <%})%>
@@ -286,10 +289,7 @@
         </ons-back-button>
         <div class="center" style="color:white; margin-right: 50px;">Detail</div>
       </ons-toolbar>
-      <!--  -->
-
       <div id="showDep"></div>
-
       <script id="Detailproduct_template" type="text/template">
           <ons-card>
               <% dataDep.forEach(function(dataDep){   
@@ -300,8 +300,7 @@
                     <ons-carousel-item id="carousel2DeP" style="background: url('<%=data.photo[1]%>') no-repeat center; background-size: contain;">
                     </ons-carousel-item>
              </ons-carousel>
-                
-              
+            
               <div class="content">
                 <div class="side" style="color: gray;" > <--sideslip--> </div>
                 <div class="title" style="font-size:18px; color: black; " ><%= data.title %></div>
@@ -322,12 +321,9 @@
                   <ons-list-item>Model  
                     <div id="dep" style="margin-left:90px;"><%=data.model%></div>
                   </ons-list-item>
-
                 </ons-list>
-                
               </div><br><br>
               <ons-button  onclick="addcart('<%=data.title%>')" icon="fa-shopping-cart" > ADD CART</ons-button>
-             
               <%})%>
             </ons-card>
             
