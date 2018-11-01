@@ -86,8 +86,8 @@
 }
  .button {
     display: inline-block;
-    background: rgb(255, 138, 0);
-    font-family: -apple-system,'Helvetica Neue',Helvetica,Arial,'Lucida Grande',sans-serif;
+    background: rgb(59, 167, 110);
+    font-family :'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     font-weight: 400;
     user-select: none;
@@ -99,7 +99,7 @@
 }
 .side{
   font-family :'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 10px;
+  font-size: 13px;
 }
 #deback{
   background: rgb(252, 124, 71, 0.2);
@@ -109,7 +109,7 @@
  
 }
 :checked+.tabbar__button {
-    color: tomato;
+    color: rgb(255, 98, 26);
  }
 
 #tabbar{
@@ -120,6 +120,11 @@
 .page, .page__background, .page__content {
     background-color:rgb(255, 255, 231, 0.2);
     position: absolute;
+}
+
+.toast{
+  background: tomato;
+
 }
   </style>
 </head>
@@ -156,7 +161,7 @@
 
   <template id="tab1.html">
     <ons-page id="Tab1"><br>
-      <p style="text-align: center; margin-top: 10px;">
+      <p style="text-align: center;">
         <ons-search-input placeholder="Search" onchange="search(this.value)"></ons-search-input>
       </p>
       <ons-carousel swipeable auto-scroll overscrollable id="carousel" style="height: 300px;">
@@ -312,7 +317,7 @@
                 </ons-list>
                 
               </div><br><br>
-              <ons-button  onclick="addtocart('<%=data.title%>')">ADD CART</ons-button>
+              <ons-button  onclick="addtocart('<%=data.title%>')" icon="fa-shopping-cart" > ADD CART</ons-button>
              
               <%})%>
             </ons-card>
@@ -501,7 +506,7 @@ var retrievedData = localStorage.getItem("quentinTarantino");
 console.log(retrievedData);
 dataCart.push(retrievedData);
 
- ons.notification.toast('Toast!', {
+ ons.notification.toast('Add item!', {
     timeout: 2000
   });
   $('#badge').attr('badge',dataCart.length);
