@@ -82,7 +82,7 @@
 .card__content {
     font-size: 16px;
     line-height: 2;
-    color: rgb(255, 98, 63);
+    color: rgb(255, 98, 26);
 }
  .button {
     display: inline-block;
@@ -140,7 +140,7 @@
       </div>
     </ons-toolbar>
 
-    <div class="page__background"></div>
+    
 
     <ons-tabbar swipeable position="auto" id="tabbar">
       <ons-tab page="tab1.html" label="Home" icon="ion-home, material:md-home" badge="new" active>
@@ -150,7 +150,7 @@
       <ons-tab page="tab3.html" label="Cart" icon="fa-shopping-cart" id="badge" active-icon="fa-shopping-cart">
       </ons-tab>
 
-    </ons-tabbar>
+    <!-- </ons-tabbar><div class="page__background"></div> -->
   </ons-page>
   </ons-navigator>
 
@@ -208,7 +208,7 @@
           <ons-col width="50%" onclick="getDetail('<%=item.title%>')">
             <ons-card style="widht:90%; height:90%;" >
              <img id="picz" src="<%=item.photo[0]%>" alt="Onsen UI" ><br>
-              <div class="title"><%=item.title%></div>
+              <div class="title" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" ><%=item.title%></div>
               <div class="content" id="Pdetail">Price: <%= item.price %> ฿</div>
               <br>
             </ons-card>
@@ -286,8 +286,8 @@
                 
               
               <div class="content">
-                <div class="side"> <--sideslip--> </div>
-                <div class="title" style="font-size:18px;" ><%= data.title %></div>
+                <div class="side" style="color: gray;" > <--sideslip--> </div>
+                <div class="title" style="font-size:18px; color: black; " ><%= data.title %></div>
                   <div><%= data.price%> ฿</div>
 
                 
