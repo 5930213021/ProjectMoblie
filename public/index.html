@@ -207,9 +207,21 @@
         <p style="text-align: center; margin-top: 10px;">
           <ons-search-input placeholder="Search" onchange="search(this.value)"></ons-search-input></p>
         <!-- //onchange="ons.notification.alert('Searched for: ' + this.value)" -->
-        <section style=" padding: 5px; text-align: center; margin: 10px;">
-          <p><b>สินค้าขายดีประจำสัปดาห์</b> อัพเดทใหม่วันนี้</p>  
-        </section>
+         <section style=" padding: 5px; text-align: center; margin: 10px;">
+       <!--   <p><b>สินค้าขายดีประจำสัปดาห์</b> อัพเดทใหม่วันนี้</p>  --> 
+        <div class="col-sm-3" style="background-color:yellow;">
+                  <b>สินค้าขายดีประจำสัปดาห์</b>
+              </div>
+              <div class="col-sm-9" style="background-color:pink;">
+                  <p>อัพเดทใหม่วันนี้</p>  
+              </div>
+        </section> 
+
+        <!-- <div class="container-fluid">
+            
+            
+            
+          </div> -->
         
         <div id="allP"></div>
         <script id="allP_template" type="text/template">
@@ -255,8 +267,8 @@
               <img class="list-item__thumbnail" src="<%=cartData.photo[0]%>">
             </div>
             <div class="center">
-              <span class="list-item__title"><%=cartData.title%></span>
-              <span class="list-item__subtitle" style="color: blue"><%=cartData.price%></span>
+              <span class="list-item__title"> <%=cartData.title%></span>
+              <span class="list-item__subtitle" style="color: blue"> <%=cartData.price%></span>
             </div>
             <div class="right">
               <p style="text-align: center; margin: 10px;">
